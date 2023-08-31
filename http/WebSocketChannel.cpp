@@ -3,7 +3,7 @@
 namespace hv {
 
 int WebSocketChannel::send(const char* buf, int len, enum ws_opcode opcode /* = WS_OPCODE_BINARY */, bool fin /* = true */) {
-    int fragment = 0xFFFF; // 65535
+    int fragment = 0x700000; // 7M
     if (len > fragment) {
         return send(buf, len, fragment, opcode);
     }
