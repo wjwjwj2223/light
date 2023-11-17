@@ -49,14 +49,16 @@ public:
         return http_resp_;
     }
 
-private:
     enum State {
         CONNECTING,
         CONNECTED,
         WS_UPGRADING,
         WS_OPENED,
         WS_CLOSED,
-    } state;
+    };
+
+private:
+    enum State state;
     HttpParserPtr       http_parser_;
     HttpRequestPtr      http_req_;
     HttpResponsePtr     http_resp_;
@@ -64,6 +66,9 @@ private:
     // ping/pong
     int                 ping_interval;
     int                 ping_cnt;
+
+public:
+    enum State status() { return state; }
 };
 
 }
